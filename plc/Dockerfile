@@ -19,11 +19,6 @@ COPY ./plc.st /home/openplc/webserver/st_files/plc.st
 COPY ./openplc.db /home/openplc/webserver/openplc.db
 COPY ./active_program /home/openplc/webserver/active_program    
 
-#CMD ["/home/openplc/start_openplc.sh"]
-
-# copy entrypoint
-COPY entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
 ENV OPENPLC_PLATFORM=linux
 RUN cd /home/openplc/webserver/scripts  && ./compile_program.sh plc.st
 CMD ["/home/openplc/start_openplc.sh"]
