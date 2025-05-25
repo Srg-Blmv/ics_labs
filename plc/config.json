@@ -1,0 +1,7 @@
+{
+  "hardwareLayer": "simulated",
+  "modbusTCP": {
+    "enabled": true,
+    "port": 502
+  }
+}

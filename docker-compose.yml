@@ -1,0 +1,51 @@
+version: "3.8"
+
+networks:
+  plc_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+
+  mgmt_net:
+    driver: bridge
+
+
+services:
+  openplc:
+    build: ./plc
+    container_name: plc
+    networks:
+      plc_net:
+        ipv4_address: 192.168.1.5
+      mgmt_net:
+    ports:
+      - "8080:8080"   # Web-интерфейс
+      - "502:502"     # Modbus TCP
+    restart: unless-stopped
+    environment:
+      - OPENPLC_RUNTIME=simulated  # или rpi, pc, и т.д.
+
+  flux_scada:
+    build: ./scada
+    container_name: scada
+    networks:
+      plc_net:
+        ipv4_address: 192.168.1.10
+      mgmt_net:
+    ports:
+      - "1881:1881"   # Web-интерфейс Flux SCADA
+    restart: unless-stopped
+    depends_on:
+      - openplc
+
+  kali:
+    build: ./kali
+    container_name: kali
+    networks:
+      plc_net:
+        ipv4_address: 192.168.1.100
+      mgmt_net:
+    ports:
+      - "6080:6080" 
+    restart: unless-stopped

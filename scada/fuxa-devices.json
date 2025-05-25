@@ -1,0 +1,118 @@
+[
+  {
+    "id": "0",
+    "name": "FUXA Server",
+    "type": "FuxaServer",
+    "property": {},
+    "enabled": true,
+    "tags": {
+      "t_d0d56fa3-d1cb4f6f": {
+        "id": "t_d0d56fa3-d1cb4f6f",
+        "name": "OpenPLC Connection Status",
+        "label": "OpenPLC Connection Status",
+        "type": "number",
+        "memaddress": "d_dba9662b-c441469a",
+        "daq": {
+          "enabled": false,
+          "interval": 60,
+          "changed": false,
+          "restored": false
+        },
+        "init": "",
+        "sysType": 1
+      }
+    },
+    "polling": 1000
+  },
+  {
+    "id": "d_dba9662b-c441469a",
+    "name": "OpenPLC",
+    "enabled": true,
+    "property": {
+      "address": "192.168.1.5",
+      "port": null,
+      "slot": null,
+      "rack": null,
+      "slaveid": "1",
+      "baudrate": 9600,
+      "databits": 8,
+      "stopbits": 1,
+      "parity": "None",
+      "options": false,
+      "connectionOption": "TcpPort",
+      "delay": 10
+    },
+    "type": "ModbusTCP",
+    "polling": 500,
+    "tags": {
+      "t_2e8c78dd-e19b4b6e": {
+        "id": "t_2e8c78dd-e19b4b6e",
+        "name": "TI100",
+        "type": "Int16",
+        "memaddress": "300000",
+        "address": 2,
+        "divisor": null,
+        "daq": {
+          "enabled": false,
+          "interval": 60,
+          "changed": false,
+          "restored": false
+        },
+        "description": null,
+        "timestamp": 1747669426762,
+        "value": 10
+      },
+      "t_2c032126-d7c34c6c": {
+        "id": "t_2c032126-d7c34c6c",
+        "name": "LI100",
+        "value": 20,
+        "type": "Int16",
+        "memaddress": "300000",
+        "address": 3,
+        "divisor": null,
+        "daq": {
+          "enabled": false,
+          "interval": 60,
+          "changed": false,
+          "restored": false
+        },
+        "description": null,
+        "timestamp": 1747669426762
+      },
+      "t_e516bf40-b15a4e45": {
+        "id": "t_e516bf40-b15a4e45",
+        "name": "PI100",
+        "value": 30,
+        "type": "Int16",
+        "memaddress": "300000",
+        "address": 4,
+        "divisor": null,
+        "daq": {
+          "enabled": false,
+          "interval": 60,
+          "changed": false,
+          "restored": false
+        },
+        "description": null,
+        "timestamp": 1747669426762
+      },
+      "t_1375ccd2-5b0c4f96": {
+        "id": "t_1375ccd2-5b0c4f96",
+        "name": "FI100",
+        "value": 40,
+        "type": "Int16",
+        "memaddress": "300000",
+        "address": 5,
+        "divisor": null,
+        "daq": {
+          "enabled": false,
+          "interval": 60,
+          "changed": false,
+          "restored": false
+        },
+        "description": null,
+        "timestamp": 1747669426762
+      }
+    }
+  }
+]
