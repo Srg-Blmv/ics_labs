@@ -1,21 +1,58 @@
 PROGRAM program0
   VAR
-    TI100 AT %IW1 : INT := 1;
-    LI100 AT %IW2 : INT := 2;
-    PI100 AT %IW3 : INT := 3;
-    FI100 AT %IW4 : INT := 4;
+    TI100 AT %IW1 : INT;
+    LISA100 AT %IW2 : INT;
+    PI100 AT %IW3 : INT;
+    FI100 AT %IW4 : INT;
+
+
+    LAH100 AT %QX11.1 : BOOL := FALSE;
+    LAL100 AT %QX11.2 : BOOL := FALSE;
+    But1 AT %QX11.3 : BOOL := FALSE;
+
+
+    HSH100 AT %QX12.3 : BOOL := FALSE;
+    HSL100 AT %QX12.4 : BOOL := FALSE;
+    NS100 AT %IX10.1 : BOOL;
+
   END_VAR
   VAR
     flag : BOOL := FALSE;
   END_VAR
 
-  IF flag = FALSE THEN
+
+  IF HSH100 = TRUE THEN
+    NS100 := TRUE;
+  END_IF;
+  
+  IF HSL100 = TRUE THEN
+    NS100 := FALSE;
+  END_IF;
+
+  LAH100 := FALSE;
+  IF LISA100 > 80 THEN
+     LAH100 := TRUE;
+  END_IF;
+
+  LAL100 := FALSE;
+  IF LISA100 < 20 THEN
+     LAL100 := TRUE;
+  END_IF;
+
+
+
+  IF But1 = FALSE THEN
     TI100 := 10;
-    LI100 := 20;
+    LISA100 := 20;
     PI100 := 30;
     FI100 := 40;
-    flag := TRUE;
+  ELSE
+    TI100 := 100;
+    LISA100 := 200;
+    PI100 := 300;
+    FI100 := 400;
   END_IF;
+
 END_PROGRAM
 
 
