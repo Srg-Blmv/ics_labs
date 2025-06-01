@@ -14,7 +14,7 @@ RUN git clone https://github.com/thiagoralves/OpenPLC_v3.git /home/openplc && \
 
 WORKDIR /home/openplc
 
-# Копирование пользовательских файлов
+#Копирование пользовательских файлов
 COPY ./plc.st /home/openplc/webserver/st_files/plc.st
 COPY ./openplc.db /home/openplc/webserver/openplc.db
 COPY ./active_program /home/openplc/webserver/active_program    
