@@ -39,6 +39,9 @@ PROGRAM program0
     HS_PUMP : BOOL;
     HS_VALVE : BOOL;
   END_VAR
+  VAR
+    HS_RESET AT %QX0.4 : BOOL := FALSE;
+  END_VAR
 
 
   IF HS_AUT THEN
@@ -56,6 +59,7 @@ PROGRAM program0
 
   (*================  ПАЗ =================== *)
 
+
     LAH100 := FALSE;
     IF LISA100 > 80 THEN
        LAH100 := TRUE;
@@ -68,16 +72,20 @@ PROGRAM program0
 
 
     LASH100 := FALSE;
-    IF (LISA100 > 90) AND (HS_LASH100 = TRUE)  THEN
-       LASH100 := TRUE;
-       HS_VALVE := FALSE;
+    IF LISA100 > 90 THEN 
+      LASH100 := TRUE;
+      IF HS_LASH100 = TRUE THEN
+        HS_VALVE := FALSE;
+        END_IF;
     END_IF;
 
 
     LASL100 := FALSE;
-    IF LISA100 < 10 AND (HS_LASL100 = TRUE) THEN
+    IF LISA100 < 10 THEN
        LASL100 := TRUE;
-       HS_PUMP := FALSE;
+       IF HS_LASL100 = TRUE THEN 
+          HS_PUMP := FALSE;
+       END_IF;
     END_IF;
     
     IF (HS_PUMP = TRUE) AND (LISA100 < 1) THEN
@@ -85,6 +93,11 @@ PROGRAM program0
       HS_PUMP := FALSE;
     END_IF;
     
+    
+    IF HS_RESET = TRUE THEN
+      EA100 := TRUE;
+      HS_RESET := FALSE;
+    END_IF;
         
     
 END_PROGRAM
