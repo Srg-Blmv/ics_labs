@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && \
 ADD . /usr/src/app/FUXA
 
 
-COPY ./fuxa-project.json  /usr/src/app/FUXA/server/fuxa-project.json
+COPY ./_appdata  /usr/src/app/FUXA/server/_appdata
 
 # Expose port
 EXPOSE 1881
